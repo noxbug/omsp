@@ -1,4 +1,6 @@
 #!/bin/bash
+# source:
+# https://e2e.ti.com/support/tools/ccs/f/81/t/846381
 
 # COMPILE
 
@@ -28,5 +30,5 @@ msp430-elf-gcc -mmcu=msp430fg4618 -I include/ -L include -T linker.msp430.x main
 # 		: bss		: Used for declaring variables
 # -d	: text		: Actual code
 # -h (-s)
-msp430-elf-objdump -d main.elf > main.asm
+mspb430-elf-objdump -d main.elf > main.asm
 cat main.asm # show output
