@@ -22,7 +22,7 @@ msp430-elf-gcc -Wall -O0 -mhwmult=none -c main.c -o main.o
 # msp430-elf-gcc -Wall -O0 -mmcu=msp430 -I /opt/ti/msp430-gcc/lib/gcc/msp430-elf/9.2.0 -T linker.msp430.x main.o -o main.elf
 # msp430-elf-gcc -Wall -O0 -mmcu=msp430 -I /opt/ti/msp430-gcc/lib/gcc/msp430-elf/9.2.0 -T linker.msp430.x main.o -o main.elf
 # msp430-elf-gcc -Wall -O0 -mmcu=msp430 -T linker.msp430.x main.o -o main.elf
-msp430-elf-gcc -mmcu=msp430fg4618 -I include/ -L include -T linker.msp430.x main.o -o main.elf
+msp430-elf-gcc -mmcu=msp430fg4618 -I include/ -L include -T linker.msp430.x main.o -o main.elf -lm
 
 # DISASSEMBLE
 
@@ -30,5 +30,5 @@ msp430-elf-gcc -mmcu=msp430fg4618 -I include/ -L include -T linker.msp430.x main
 # 		: bss		: Used for declaring variables
 # -d	: text		: Actual code
 # -h (-s)
-mspb430-elf-objdump -d main.elf > main.asm
+msp430-elf-objdump -d main.elf > main.asm
 cat main.asm # show output

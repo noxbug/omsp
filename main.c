@@ -1,18 +1,33 @@
+#include <math.h>
 #include "omsp_system.h"
-#include <inttypes.h>
 
-int main(void) {
-	//WDTCTL = WDTPW | WDTHOLD;  // Disable watchdog timer
-	
-	int a = 8;
-	int b = 5; 
-	int result = a*b;
-	
-	//result += result;
-	
-	while (1) {
-		__asm__("nop");
+int program(void)
+{
+	float out;
+#if 1
+	int i;
+	for (i = 0; i < 10; i++) {
+		out = logf((float)i);
+		if (out > 0.f) {
+			break;
+		}
 	}
+#else
+	out = logf(3.14);
+#endif
 
-	return 0;
+	/* loop */
+    while (1) {}
+
+    return 0;
+}
+
+int main(void)
+{
+    /* disable watchdog timer */
+    WDTCTL = WDTPW | WDTHOLD;
+
+    /* set stack pointer (R1) at the end of SRAM */
+    __asm__("mov #0x1ffe, R1");
+    return program();
 }
